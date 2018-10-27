@@ -34,8 +34,7 @@ configurations {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
-	//compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	//compile('org.springframework.boot:spring-boot-starter-security')
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity4'
 	compile group: 'org.springframework.boot', name: 'spring-boot-devtools'
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
@@ -44,7 +43,7 @@ dependencies {
     compile ('org.webjars.bower:datatables:1.10.19')
     compile ('org.hibernate.validator:hibernate-validator')
     compile group:'org.webjars',name:'angularjs',version:'1.7.2'
-	//compile ('mysql:mysql-connector-java:5.1.46')
+	compile ('mysql:mysql-connector-java:5.1.46')
 	
 	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
