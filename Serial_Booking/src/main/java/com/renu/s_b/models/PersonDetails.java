@@ -106,6 +106,12 @@ public class PersonDetails extends BasePersonDetails<Long> {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	@Override
+	public String toString() {
+		return "PersonDetails [id=" + id + ", iCode=" + iCode + ", name=" + name + ", degree=" + degree + ", expert="
+				+ expert + ", chamberLocation=" + chamberLocation + ", contact=" + contact + "]";
+	}
 	
 	
 	
