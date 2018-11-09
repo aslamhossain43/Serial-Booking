@@ -28,8 +28,8 @@ public class PersonDetails extends BasePersonDetails<Long> {
 	private String expert;
 	
 	
-	@NotBlank(message = "Enter your chember location")
-	private String chemberLocation;
+	@NotBlank(message = "Enter your chamber location")
+	private String chamberLocation;
 	@NotBlank(message = "Enter your contact")
 	private String contact;
 	public PersonDetails() {
@@ -74,14 +74,16 @@ public class PersonDetails extends BasePersonDetails<Long> {
 		this.degree = degree;
 	}
 
-	public String getChemberLocation() {
-		return chemberLocation;
+	
+	
+
+	public String getChamberLocation() {
+		return chamberLocation;
 	}
 
-	public void setChemberLocation(String chemberLocation) {
-		this.chemberLocation = chemberLocation;
+	public void setChamberLocation(String chamberLocation) {
+		this.chamberLocation = chamberLocation;
 	}
-	
 
 	public String getContact() {
 		return contact;

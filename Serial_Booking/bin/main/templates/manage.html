@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header-css :: header-css(title='Home Page')"></head>
+
+<body>
+<div class="preLoader">	</div> 
+	<div th:replace="fragments/nav-bar :: nav-bar"></div>
+
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class=" col-sm-12 col-md-12 col-lg-12">
+			<!-- message -->
+				<div class="row">
+					<div
+						class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
+						
+						<div th:if="${message}">
+						       <br><br><br><br>
+							<div id="textCenter" th:text="${message}"
+								class="alert alert-info fade in "></div>
+						
+						</div>
+					</div>
+				</div>
+				<!-- heading -->
+				<div
+					class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
+					    <br><br><br>
+			
+						<h2 id="homeTitle">You can booking your serial</h2>
+					   
+				</div>
+				
+				
+				
+				 <!-- Form form for person details -->
+	<div class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
+					   
+ <fieldset>
+
+
+<form name="myForm" class="form-horizontal" role="form" th:action="@{/}" 
+th:object="${persondetails}" method="post" enctype="multipart/form-data">
+
+
+
+
+
+<div class="form-group">
+<label for="id" class="col-sm-3 col-md-3 col-lg-3 control-label"></label>
+<div class="col-sm-8 col-md-8 col-lg-8">
+<input type="hidden" class="form-control" id="id" th:field="*{id}" th:value="${persondetails.id}">
+</div>
+</div>
+
+
+<div class="form-group">
+<label for="createdDate" class="col-sm-3 col-md-3 col-lg-3 control-label"></label>
+<div class="col-sm-8 col-md-8 col-lg-8">
+<input type="hidden" class="form-control" id="createdDate" th:field="*{createdDate}" th:value="${persondetails.createdDate}">
+</div>
+</div>
+
+
+
+<div class="form-group">
+<label for="image" class="col-sm-3 col-md-3 col-lg-3  control-label">Upload an image(mandatory) : </label>
+<div class="col-sm-8 col-md-8 col-lg-8 ">
+<input type="file" class="form-control" id="image" th:field="*{iFile}" autocomplete="off">
+<p id="" th:if="${#fields.hasErrors('iFile')}" th:errors="*{iFile}"></p>
+
+</div>
+</div>
+
+
+
+<div class="form-group">
+<label for="name" class="col-sm-3 col-md-3 col-lg-3 control-label">Name : </label>
+<div class="col-sm-8 col-md-8 col-lg-8 ">
+<input type="text" class="form-control" id="name"  th:field="*{name}" 
+th:value="${persondetails.name}" placeholder=" Enter your Name" autocomplete="off">
+<p id="" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+
+</div>
+</div>
+
+
+<div class="form-group">
+<label for="degree" class="col-sm-3 col-md-3 col-lg-3  control-label">Degree : </label>
+<div class="col-sm-8 col-md-8 col-lg-8 ">
+<input type="text" class="form-control" id="degree" th:field="*{degree}" 
+th:value="${persondetails.degree}" placeholder=" Enter degree" autocomplete="off">
+<p id="" th:if="${#fields.hasErrors('degree')}" th:errors="*{degree}"></p>
+
+</div>
+</div>
+
+
+<div class="form-group">
+<label for="expert" class="col-sm-3 col-md-3 col-lg-3  control-label">Expert : </label>
+<div class="col-sm-8 col-md-8 col-lg-8 ">
+<input type="text" class="form-control" id="expert" th:field="*{expert}"
+th:value="${persondetails.expert}" placeholder=" Enter expert details" autocomplete="off">
+<p id="" th:if="${#fields.hasErrors('expert')}" th:errors="*{expert}"></p>
+
+</div>
+</div>
+
+
+ <div class="form-group">
+<label for="chamberLocation" class="col-sm-3 col-md-3 col-lg-3  control-label">ChamberLocation : </label>
+<div class="col-sm-8 col-md-8 col-lg-8 ">
+<input type="text" class="form-control" id="chamberLocation" th:field="*{chamberLocation}" 
+th:value="${persondetails.chamberLocation}" placeholder=" Enter chamberLocation" autocomplete="off">
+<p id="" th:if="${#fields.hasErrors('chamberLocation')}" th:errors="*{chamberLocation}"></p>
+
+</div>
+</div>
+
+
+
+<div class="form-group">
+<label for="contact" class="col-sm-3 col-md-3 col-lg-3  control-label">Contact : </label>
+<div class="col-sm-8 col-md-8 col-lg-8 ">
+<input type="text" class="form-control" id="contact" th:field="*{contact}" 
+th:value="${persondetails.contact}" placeholder=" Enter contact" autocomplete="off">
+<p id="" th:if="${#fields.hasErrors('contact')}" th:errors="*{contact}"></p>
+
+</div>
+</div>
+
+
+
+<div class="forn-group">
+<div class="col-sm-2 col-sm-offset-6  col-md-2 col-md-offset-6  col-lg-2 col-lg-offset-6">
+<button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</div>
+
+</form>
+</fieldset>
+ 
+				
+	</div>
+
+				 <!-- well for rules -->
+	<div class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
+					   
+  <h2>Well</h2>
+  <div class="well">Basic Well</div>				
+	</div>
+
+			 <!-- well for notification -->
+	<div class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
+					   
+  <h2>Notification</h2>
+  <div class="well">Basic Well</div>				
+	</div>
+
+
+ <!-- well for button-->
+	<div class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
+					   
+  
+  <div class="well text-center"><button type="button" class="btn btn-primary">Add your serial</button></div>				
+	</div>
+
+
+
+
+
+
+
+
+
+
+			</div>
+		</div>
+	</div>
+	<div th:replace="fragments/footer-js::footer-js"></div>
+
+</body>
+
+</html>
