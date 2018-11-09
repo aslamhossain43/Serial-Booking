@@ -56,15 +56,17 @@ if(table.length){
 	  {
 		  data:'contact'
 		 
+	  },
+	  {
+		  data:'lastModifiedDate'
+		 
 	  }
 	  
 	 
 	 
   ]
 	
-	
-	
-	
+		
 });
 } 
 
