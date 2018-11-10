@@ -33,6 +33,31 @@
 					   
 				</div>
 				
+				<!-- Modal for job type -->
+<div class="modal fade" id="myPersonDetailsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal" 
+	        
+	        aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       <h4 id="modalTextCenter" class="modal-title modalTextCenter">Confirmation for deleting</h4>
+      </div>
+      <div class="modal-body">
+        <h4 id="modalTextCenter">Do you want to delete id number </h4>
+        <h4 id="modalTextCenter" class="personDetailsDeleteByAdminId"></h4>
+          <h4 id="modalTextCenter">??? </h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="modalTextCenter"  class="btn btn-primary" data-dismiss="modal">Close</button>
+       
+       <a class="personDetailsDeleteByAdmin btn btn-primary" href="j"><span id="modalTextCenter">Delete</span></a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal -->
 				
 				
 				 <!-- Form form for person details -->
@@ -63,6 +88,12 @@ th:object="${persondetails}" method="post" enctype="multipart/form-data">
 </div>
 </div>
 
+<div class="form-group">
+<label for="iCode" class="col-sm-3 col-md-3 col-lg-3 control-label"></label>
+<div class="col-sm-8 col-md-8 col-lg-8">
+<input type="hidden" class="form-control" id="iCode" th:field="*{iCode}" th:value="${persondetails.iCode}">
+</div>
+</div>
 
 
 <div class="form-group">
@@ -167,7 +198,7 @@ th:value="${persondetails.contact}" placeholder=" Enter contact" autocomplete="o
 <th>Chamber location</th>
 <th>Contact</th>
 <th>Last modified date</th>
-
+<th>Edit,Delete</th>
 </tr>
 </thead>
 

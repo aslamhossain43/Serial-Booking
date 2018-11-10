@@ -6,5 +6,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import com.renu.s_b.models.PersonDetails;
 
 public interface PersonDetailsRepository extends JpaRepository<PersonDetails, Long>,JpaSpecificationExecutor<PersonDetails> {
-
+//getById
+	public PersonDetails getById(Long id);
 }

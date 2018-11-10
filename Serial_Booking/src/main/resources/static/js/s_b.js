@@ -60,6 +60,23 @@ if(table.length){
 	  {
 		  data:'lastModifiedDate'
 		 
+	  } ,
+	  {
+		  data:'id',
+		  mRender:function(data){
+			  				
+			  var str='';
+		
+						
+			  str+='<a href="/updatePersonDetails?id='+data+'" id="editTrauncate" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>';
+			   
+			  str+='<button id="editTrauncate" class="btn btn-primary tag_cnt btn btn-danger"  onclick="showPersonModal('+data+')" type="button" value="1"><span class="glyphicon glyphicon-trash"></span></button>';
+								
+			  return str;
+			
+			  
+		  }
+		 
 	  }
 	  
 	 
@@ -74,10 +91,10 @@ if(table.length){
 /*bootstrap modal*/
 
 /*for couching*/
-function showCouchingModal(data)
+function showPersonModal(data)
 {
    //you can do anything with data, or pass more data to this function. i set this data to modal header for example
-	 $('.couchingDeleteByAdmin').attr('href','/deleteCouchingByAdmin?id='+data);
-	$("#myModal .couchingDeleteId").html(data)
-   $("#myModal").modal();
+	 $('.personDetailsDeleteByAdmin').attr('href','/personDetailsDeleteByAdmin?id='+data);
+	$("#myPersonDetailsModal .personDetailsDeleteByAdminId").html(data)
+   $("#myPersonDetailsModal").modal();
 }

@@ -10,11 +10,39 @@ background:url(../images/loader.gif)50% no-repeat #fff
 
 
 }
+
+#homeTitle{
+font-style: italic;
+color:blue;
+
+
+}
 #viewAllPersonDetailsImg{
 width:100px;
 height:80px;
 
 }
 
+#editTrauncate{
+margin-left:10px;
+margin-top:2px;
+margin-bottom:2px;
+}
+#errorImage{
+width:100%;
+height:auto;
+}
+#modalTextCenter{
+ text-align: center;
 
+}
+.modal-header{
+background-color:blue;
+}
+.modal-footer{
+background-color:orange;
+}
+#mediaText{
+color:blue;
+}
 

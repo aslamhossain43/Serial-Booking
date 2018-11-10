@@ -29,24 +29,35 @@
 					class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
 					    <br><br><br>
 			
-						<h2 id="homeTitle">You can booking your serial</h2>
-					   
+						<h4 id="homeTitle">You can booking your serial and visit easily to get service.Before booking your serial you should notice below 
+						carefully</h4>
+					   <br>
 				</div>
 				
 				
 				
 				 <!-- Left-aligned media object -->
-	<div class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
+	<div th:each="pd:${allpersondetails}" class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
 					   
-  <div class="media">
-    <div class="media-left">
-      <img src="img_avatar1.png" class="media-object" style="width:60px">
-    </div>
+ 
+    <div class="media-top">
+    
+      <img th:src="@{images/__${pd.getiCode()}__.jpg}" class="media-object" style="width:100px;height:100px;">
+    
     <div class="media-body">
-      <h4 class="media-heading">Left-aligned</h4>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <br>
+      <h3 id="mediaText" class="media-heading" th:text="${pd.getName()}"></h3>
+      <br>
+      <p id="mediaText" th:text="${pd.getDegree()}"></p>
+      <br>
+      <p id="mediaText" th:text="'Expert : '+${pd.getExpert()}"></p>
+      <br>
+      <p id="mediaText" th:text="'Location : '+${pd.getDegree()}"></p>
+      <br>
+      <p id="mediaText" th:text="'Contact : '+${pd.getContact()}"></p>
+      
     </div>
-  </div>
+ 
 				
 	</div>
 
