@@ -9,8 +9,7 @@
 
 
 	<div class="container-fluid">
-		<div class="row">
-			<div class=" col-sm-12 col-md-12 col-lg-12">
+		
 			<!-- message -->
 				<div class="row">
 					<div
@@ -60,29 +59,105 @@
  
 				
 	</div>
-
+</div>
 				 <!-- well for rules -->
 	<div class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
 					   
-  <h2>Well</h2>
-  <div class="well">Basic Well</div>				
+  <h2>Some rules !!!</h2>
+  <div class="well"   th:each="r:${rule}" > <p  th:text="${r.getRule()}" ></p></div>				
 	</div>
 
 			 <!-- well for notification -->
 	<div class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
 					   
-  <h2>Notification</h2>
-  <div class="well">Basic Well</div>				
+  <h2>Notification !!!</h2>
+  <div class="well" th:each="n:${notification}"><p th:text="${n.getNotification()}"></p></div>				
 	</div>
 
 
- <!-- well for button-->
-	<div class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
-					   
-  
-  <div class="well text-center"><button type="button" class="btn btn-primary">Add your serial</button></div>				
-	</div>
+ 
+ <!-- start serial booking-->
+ <div class="row">
+ <div class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
+ 
+ <fieldset>
 
+
+<form class="form-horizontal" role="form" th:action="@{/addSerialBooking}" 
+th:object="${serialbooking}" method="post">
+
+
+
+
+
+<div class="form-group">
+<label for="id" class="col-sm-3 col-md-3 col-lg-3 control-label"></label>
+<div class="col-sm-8 col-md-8 col-lg-8">
+<input type="hidden" class="form-control" id="id" th:field="*{id}" th:value="${serialbooking.id}">
+</div>
+</div>
+
+
+<div class="form-group">
+<label for="createdDate" class="col-sm-3 col-md-3 col-lg-3 control-label"></label>
+<div class="col-sm-8 col-md-8 col-lg-8">
+<input type="hidden" class="form-control" id="createdDate" th:field="*{createdDate}" th:value="${serialbooking.createdDate}">
+</div>
+</div>
+
+
+<div class="form-group blu-margin">
+<label for="visitTime" class=" col-sm-3 col-md-3 col-lg-3 control-label">Visit time : </label>
+<div class="col-sm-8 col-md-8 col-lg-8 ">
+<select class="form-control" id="visitTime" name="visitTime" th:with="visitTime=*{visitTime}" >
+
+ <option value="" disabled="disabled" selected="selected">Choose your visit time</option>
+
+<option th:value="First-visit" th:text="First-visit"></option>
+
+ <option th:value="Second-visit" th:text="Second-visit"></option>
+
+</select>
+<p id="" th:if="${#fields.hasErrors('visitTime')}" th:errors="*{visitTime}"></p>
+</div>
+</div>
+
+
+
+<div class="form-group">
+<label for="name" class="col-sm-3 col-md-3 col-lg-3 control-label">Name : </label>
+<div class="col-sm-8 col-md-8 col-lg-8 ">
+<input type="text" class="form-control" id="name"  th:field="*{name}" 
+th:value="${serialbooking.name}" placeholder=" Enter your name" autocomplete="off">
+<p id="" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+
+</div>
+</div>
+
+
+<div class="form-group">
+<label for="age" class="col-sm-3 col-md-3 col-lg-3  control-label">Age : </label>
+<div class="col-sm-8 col-md-8 col-lg-8 ">
+<input type="text" class="form-control" id="age" th:field="*{age}" 
+th:value="${serialbooking.age}" placeholder=" Enter your age" autocomplete="off">
+<p id="" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></p>
+
+</div>
+</div>
+
+
+<div class="forn-group">
+<div class="col-sm-2 col-sm-offset-6  col-md-2 col-md-offset-6  col-lg-2 col-lg-offset-6">
+<button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</div>
+
+</form>
+</fieldset>
+ </div>
+ </div>
+ 
+<!-- end serial booking -->
 
 
 
@@ -93,8 +168,7 @@
 
 
 			</div>
-		</div>
-	</div>
+	
 	<div th:replace="fragments/footer-js::footer-js"></div>
 
 </body>

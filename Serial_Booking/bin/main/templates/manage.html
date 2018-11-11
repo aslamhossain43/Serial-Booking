@@ -8,9 +8,7 @@
 	<div th:replace="fragments/nav-bar :: nav-bar"></div>
 
 
-	<div class="container-fluid">
-		<div class="row">
-			<div class=" col-sm-12 col-md-12 col-lg-12">
+	<div class="container-fluid">	
 			<!-- message -->
 				<div class="row">
 					<div
@@ -25,13 +23,15 @@
 					</div>
 				</div>
 				<!-- heading -->
+				<div class="row">
 				<div
 					class=" col-sm-4 col-sm-offset-4  col-md-4 col-md-offset-4  col-lg-4 col-lg-offset-4 ">
 					    <br><br><br>
 			
 						<h2 id="homeTitle">You can booking your serial</h2>
-					   
+					   </div>
 				</div>
+				<hr>
 				
 				<!-- Modal for job type -->
 <div class="modal fade" id="myPersonDetailsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -61,6 +61,7 @@
 				
 				
 				 <!-- Form form for person details -->
+				 <div class="row">
 	<div class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
 					   
  <fieldset>
@@ -176,10 +177,10 @@ th:value="${persondetails.contact}" placeholder=" Enter contact" autocomplete="o
  
 				
 	</div>
+	</div>
 	<hr>
-	<br><br>
 	<!-- table for person details -->
-
+<div class="row">
 <div class=" col-md-10 col-md-offset-1  col-lg-10 col-lg-offset-1">
 
 
@@ -209,45 +210,123 @@ th:value="${persondetails.contact}" placeholder=" Enter contact" autocomplete="o
 
 </div>
 </div>
+</div>
 
-	
-	
-	
-	
-
-				 <!-- well for rules -->
+	<hr>
+					 <!-- Form form for rules -->
+					 <div class="row">
 	<div class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
 					   
-  <h2>Well</h2>
-  <div class="well">Basic Well</div>				
-	</div>
+ <fieldset>
 
+
+<form class="form-horizontal" role="form" th:action="@{/addRules}" 
+th:object="${rules}" method="post">
+
+
+
+
+
+<div class="form-group">
+<label for="id" class="col-sm-3 col-md-3 col-lg-3 control-label"></label>
+<div class="col-sm-8 col-md-8 col-lg-8">
+<input type="hidden" class="form-control" id="id" th:field="*{id}" th:value="${rules.id}">
+</div>
+</div>
+
+
+<div class="form-group">
+<label for="createdDate" class="col-sm-3 col-md-3 col-lg-3 control-label"></label>
+<div class="col-sm-8 col-md-8 col-lg-8">
+<input type="hidden" class="form-control" id="createdDate" th:field="*{createdDate}" th:value="${rules.createdDate}">
+</div>
+</div>
+
+
+<div class="form-group">
+<label for="rules" class="col-sm-3 col-md-3 col-lg-3 control-label">Rules : </label>
+<div class="col-sm-8 col-md-8 col-lg-8 ">
+<textarea cols="80" rows="5" class="form-control" id="rules"  th:field="*{rule}" 
+th:value="${rules.rule}" placeholder=" Enter your rules" autocomplete="off"></textarea>
+<p id="" th:if="${#fields.hasErrors('rule')}" th:errors="*{rule}"></p>
+
+</div>
+</div>
+
+
+
+<div class="forn-group">
+<div class="col-sm-2 col-sm-offset-6  col-md-2 col-md-offset-6  col-lg-2 col-lg-offset-6">
+<button type="submit" class="btn btn-primary">Submit</button>
+	<br><br><br>
+</div>
+</div>
+
+</form>
+</fieldset>
+ 
+				
+	</div>
+	</div>
+	<hr>
 			 <!-- well for notification -->
+					 <div class="row">
 	<div class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
 					   
-  <h2>Notification</h2>
-  <div class="well">Basic Well</div>				
+ <fieldset>
+
+
+<form class="form-horizontal" role="form" th:action="@{/addNotification}" 
+th:object="${notifications}" method="post">
+
+
+
+
+
+<div class="form-group">
+<label for="id" class="col-sm-3 col-md-3 col-lg-3 control-label"></label>
+<div class="col-sm-8 col-md-8 col-lg-8">
+<input type="hidden" class="form-control" id="id" th:field="*{id}" th:value="${notifications.id}">
+</div>
+</div>
+
+
+<div class="form-group">
+<label for="createdDate" class="col-sm-3 col-md-3 col-lg-3 control-label"></label>
+<div class="col-sm-8 col-md-8 col-lg-8">
+<input type="hidden" class="form-control" id="createdDate" th:field="*{createdDate}" th:value="${notifications.createdDate}">
+</div>
+</div>
+
+
+<div class="form-group">
+<label for="notification" class="col-sm-3 col-md-3 col-lg-3 control-label">Notification : </label>
+<div class="col-sm-8 col-md-8 col-lg-8 ">
+<textarea cols="80" rows="5"  class="form-control" id="notification"  th:field="*{notification}" 
+th:value="${notifications.notification}" placeholder=" Enter your notification" autocomplete="off"></textarea>
+<p id="" th:if="${#fields.hasErrors('notification')}" th:errors="*{notification}"></p>
+
+</div>
+</div>
+
+
+
+<div class="forn-group">
+<div class="col-sm-2 col-sm-offset-6  col-md-2 col-md-offset-6  col-lg-2 col-lg-offset-6">
+<button type="submit" class="btn btn-primary">Submit</button>
+	<br><br><br>
+</div>
+</div>
+
+</form>
+</fieldset>
+ 
+				
 	</div>
-
-
- <!-- well for button-->
-	<div class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
-					   
-  
-  <div class="well text-center"><button type="button" class="btn btn-primary">Add your serial</button></div>				
 	</div>
+	<hr>
 
 
-
-
-
-
-
-
-
-
-			</div>
-		</div>
 	</div>
 	<div th:replace="fragments/footer-js::footer-js"></div>
 

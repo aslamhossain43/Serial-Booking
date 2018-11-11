@@ -18,8 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.renu.s_b.models.Notification;
 import com.renu.s_b.models.PersonDetails;
+import com.renu.s_b.models.Rules;
+import com.renu.s_b.models.SerialBooking;
+import com.renu.s_b.repositories.NotificationRepository;
 import com.renu.s_b.repositories.PersonDetailsRepository;
+import com.renu.s_b.repositories.RulesRepository;
+import com.renu.s_b.repositories.SerialBookingRepository;
 import com.renu.s_b.utility.FileUploadUtility;
 import com.renu.s_b.validator.ImageValidator;
 
@@ -29,10 +35,18 @@ public class ManageController {
 private static final Logger LOGGER=LoggerFactory.getLogger(ManageController.class);
 @Autowired
 PersonDetailsRepository personDetailsRepository;
+@Autowired
+RulesRepository rulesRepository;
+@Autowired
+NotificationRepository notificationRepository;
+@Autowired
+SerialBookingRepository serialBookingRepository;
 @RequestMapping(value="/aassllaamm")
 public String showManage(Model model) {
 	LOGGER.info("From class ManageController,method : showManage()");
 	model.addAttribute("persondetails",new PersonDetails());
+	model.addAttribute("rules",new Rules());
+	model.addAttribute("notifications",new Notification());
 	model.addAttribute("jsonurl","/getAllPersonDetails");
 	
 	return "manage";
@@ -44,11 +58,36 @@ public List<PersonDetails>getAllPersonDetails(){
 	return personDetails;
 	
 }
+//GET RULES
+@ModelAttribute("rule")
+public List<Rules>getAllRules(){
+List<Rules>rules=rulesRepository.findAll();	
+	
+	return rules;
+}
+
+//GET NOTIFICATION
+@ModelAttribute("notification")
+public List<Notification>getAllNotification(){
+List<Notification>notifications=notificationRepository.findAll();	
+	
+	return notifications;
+}
+
+
+
+
+
+
+
 //FOR PERSONDETAILS ADD
 @RequestMapping(value="/addPersonDetails",method=RequestMethod.POST)
 public String showManageForPersonDetals(@Valid @ModelAttribute("persondetails") PersonDetails personDetails,
 		BindingResult bindingResult,HttpServletRequest httpServletRequest,Model model) {
 	LOGGER.info("From class ManageController,method : showManageForPersonDetails()");
+	model.addAttribute("persondetails",new PersonDetails());
+	model.addAttribute("rules",new Rules());
+	model.addAttribute("notifications",new Notification());
 	if (bindingResult.hasErrors()) {
 		model.addAttribute("message","Your operation has not been completed successfully !!!");
 		return "manage";
@@ -73,7 +112,9 @@ public String showManageForPersonDetals(@Valid @ModelAttribute("persondetails") 
 public String updatePersonDetails(@RequestParam("id")Long id,Model model) {
 	LOGGER.info("From class ManageController,method : updatePersonDetails()");
     PersonDetails personDetails=personDetailsRepository.getById(id);
-    model.addAttribute("persondetails",new PersonDetails());
+    model.addAttribute("rules",new Rules());
+	model.addAttribute("notifications",new Notification());
+	
     model.addAttribute("persondetails", personDetails);
     
 	
@@ -92,9 +133,58 @@ public String deletePersonDetails(@RequestParam("id")Long id,Model model) {
     personDetailsRepository.deleteById(id);;
 	model.addAttribute("message","Id  "+id+"  has been deleted successfully !!!");
 	model.addAttribute("persondetails",new PersonDetails());
+	model.addAttribute("rules",new Rules());
+	model.addAttribute("notifications",new Notification());
+	
+	return "manage";
+}
+//FOR RULES
+//ADD RULES
+@RequestMapping(value="/addRules",method=RequestMethod.POST)
+public String addRules(@Valid @ModelAttribute("rules") Rules rules,BindingResult bindingResult,Model model) {
+	LOGGER.info("From class ManageController,method : addRules()");
+	model.addAttribute("persondetails",new PersonDetails());
+	model.addAttribute("rules",new Rules());
+	model.addAttribute("notifications",new Notification());
+	if (bindingResult.hasErrors()) {
+		model.addAttribute("message","Your operation has not been completed successfully !!!");
+		return "manage";
+	}
+	rulesRepository.save(rules);
+	model.addAttribute("message","Your operation has been completed successfully !!!");
 	return "manage";
 }
 
+//FOR NOTIFICATION
+//ADD NOTIFICATION
+@RequestMapping(value="/addNotification",method=RequestMethod.POST)
+public String addNotification(@Valid @ModelAttribute("notifications") Notification notification,BindingResult bindingResult,Model model) {
+	LOGGER.info("From class ManageController,method : addNotification()");
+	model.addAttribute("persondetails",new PersonDetails());
+	model.addAttribute("rules",new Rules());
+	model.addAttribute("notifications",new Notification());
+	if (bindingResult.hasErrors()) {
+		model.addAttribute("message","Your operation has not been completed successfully !!!");
+		return "manage";
+	}
+	notificationRepository.save(notification);
+	model.addAttribute("message","Your operation has been completed successfully !!!");
+	return "manage";
+}
+//FOR SERIAL BOOKING
+//ADD SERIAL BOOKING
+@RequestMapping(value="/addSerialBooking",method=RequestMethod.POST)
+public String addSerialBooking(@Valid @ModelAttribute("serialbooking")SerialBooking serialBooking,BindingResult bindingResult,Model model) {
+	LOGGER.info("From class ManageController,method : addSerialBooking()");
+	model.addAttribute("serialbooking",new SerialBooking());
+	if (bindingResult.hasErrors()) {
+		model.addAttribute("message","Your operation has not been completed successfully !!!");
+		return "home";
+	}
+	serialBookingRepository.save(serialBooking);
+	model.addAttribute("message","Your operation has been completed successfully !!!");
+	return "home";
+}
 
 
 }

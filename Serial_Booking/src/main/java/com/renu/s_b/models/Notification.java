@@ -29,6 +29,10 @@ public class Notification extends BaseNotification<Long> {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	@Override
+	public String toString() {
+		return "Notification [id=" + id + ", notification=" + notification + "]";
+	}
 	
 	
 	

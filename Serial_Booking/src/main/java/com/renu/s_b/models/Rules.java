@@ -12,20 +12,24 @@ public class Rules extends BaseRules<Long> {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@NotBlank(message="Enter your rules")
-	private String rules;
+	private String rule;
 	public Rules() {}
 	@Override
 	public Long getId() {
 		return id;
 	}
-	public String getRules() {
-		return rules;
+	public String getRule() {
+		return rule;
 	}
-	public void setRules(String rules) {
-		this.rules = rules;
+	public void setRule(String rule) {
+		this.rule = rule;
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	@Override
+	public String toString() {
+		return "Rules [id=" + id + ", rule=" + rule + "]";
 	}
 	
 	
