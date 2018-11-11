@@ -16,6 +16,7 @@ public class HomeController {
 	public String home(Model model) {
 		LOGGER.info(" From class : HomeController,Method : home()");
 		model.addAttribute("serialbooking",new SerialBooking());
+		model.addAttribute("jsonurlS","/getAllSerial");
 		return "home";
 	}
 	

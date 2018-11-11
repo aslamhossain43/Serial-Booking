@@ -41,14 +41,16 @@ RulesRepository rulesRepository;
 NotificationRepository notificationRepository;
 @Autowired
 SerialBookingRepository serialBookingRepository;
+
 @RequestMapping(value="/aassllaamm")
 public String showManage(Model model) {
 	LOGGER.info("From class ManageController,method : showManage()");
 	model.addAttribute("persondetails",new PersonDetails());
 	model.addAttribute("rules",new Rules());
 	model.addAttribute("notifications",new Notification());
-	model.addAttribute("jsonurl","/getAllPersonDetails");
-	
+	model.addAttribute("jsonurlPD","/getAllPersonDetails");
+	model.addAttribute("jsonurlR","/getAllRules");
+	model.addAttribute("jsonurlN","/getAllNotification");
 	return "manage";
 }
 //GET PERSONDETAILS
@@ -155,6 +157,34 @@ public String addRules(@Valid @ModelAttribute("rules") Rules rules,BindingResult
 	return "manage";
 }
 
+//FOR RULES UPDATE
+@RequestMapping(value="/updateRules")
+public String updateRules(@RequestParam("id")Long id,Model model) {
+	LOGGER.info("From class ManageController,method : updateRules()");
+  Rules rules=rulesRepository.getById(id);
+  model.addAttribute("rules",rules);
+	model.addAttribute("notifications",new Notification());
+	
+  model.addAttribute("persondetails", new PersonDetails());
+  
+	
+	return "manage";
+}
+//FOR RULES DELETE
+@RequestMapping(value="/rulesDeleteByAdmin")
+public String deleteRules(@RequestParam("id")Long id,Model model) {
+	LOGGER.info("From class ManageController,method : deleteRules()");
+	Rules rules=rulesRepository.getById(id);
+	
+  rulesRepository.delete(rules);
+	model.addAttribute("message","Id  "+id+"  has been deleted successfully !!!");
+	model.addAttribute("persondetails",new PersonDetails());
+	model.addAttribute("rules",new Rules());
+	model.addAttribute("notifications",new Notification());
+	
+	return "manage";
+}
+
 //FOR NOTIFICATION
 //ADD NOTIFICATION
 @RequestMapping(value="/addNotification",method=RequestMethod.POST)
@@ -171,6 +201,38 @@ public String addNotification(@Valid @ModelAttribute("notifications") Notificati
 	model.addAttribute("message","Your operation has been completed successfully !!!");
 	return "manage";
 }
+
+
+//FOR NOTIFICATION UPDATE
+@RequestMapping(value="/updateNotification")
+public String updateNotification(@RequestParam("id")Long id,Model model) {
+	LOGGER.info("From class ManageController,method : updateNotification()");
+Notification notification=notificationRepository.getById(id);
+model.addAttribute("rules",new Rules());
+	model.addAttribute("notifications",notification);
+	
+model.addAttribute("persondetails", new PersonDetails());
+
+	
+	return "manage";
+}
+//FOR NOTIFICATION DELETE
+@RequestMapping(value="/notificationDeleteByAdmin")
+public String deleteNotification(@RequestParam("id")Long id,Model model) {
+	LOGGER.info("From class ManageController,method : deleteNotification()");
+	Notification notification=notificationRepository.getById(id);
+	
+notificationRepository.delete(notification);
+	model.addAttribute("message","Id  "+id+"  has been deleted successfully !!!");
+	model.addAttribute("persondetails",new PersonDetails());
+	model.addAttribute("rules",new Rules());
+	model.addAttribute("notifications",new Notification());
+	
+	return "manage";
+}
+
+
+
 //FOR SERIAL BOOKING
 //ADD SERIAL BOOKING
 @RequestMapping(value="/addSerialBooking",method=RequestMethod.POST)
@@ -184,6 +246,20 @@ public String addSerialBooking(@Valid @ModelAttribute("serialbooking")SerialBook
 	serialBookingRepository.save(serialBooking);
 	model.addAttribute("message","Your operation has been completed successfully !!!");
 	return "home";
+}
+//FOR SERIAL DELETE
+@RequestMapping(value="/serialDeleteByAdmin")
+public String deleteSerial(Model model) {
+	LOGGER.info("From class ManageController,method : deleteSerial()");
+	
+	model.addAttribute("persondetails",new PersonDetails());
+	model.addAttribute("rules",new Rules());
+	model.addAttribute("notifications",new Notification());
+	model.addAttribute("jsonurlPD","/getAllPersonDetails");
+	model.addAttribute("jsonurlR","/getAllRules");
+	model.addAttribute("jsonurlN","/getAllNotification");
+	model.addAttribute("jsonurlS","/getAllSerial");
+	return "manage";
 }
 
 

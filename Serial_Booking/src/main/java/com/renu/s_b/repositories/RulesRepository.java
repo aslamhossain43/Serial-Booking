@@ -6,5 +6,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import com.renu.s_b.models.Rules;
 
 public interface RulesRepository extends JpaRepository<Rules, Long>,JpaSpecificationExecutor<Rules>{
-
+//GET BY ID
+	public Rules getById(Long id);
 }

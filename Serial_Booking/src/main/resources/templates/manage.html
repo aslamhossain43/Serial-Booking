@@ -22,7 +22,7 @@
 						</div>
 					</div>
 				</div>
-				<!-- heading -->
+				<!-- heading for person details form-->
 				<div class="row">
 				<div
 					class=" col-sm-4 col-sm-offset-4  col-md-4 col-md-offset-4  col-lg-4 col-lg-offset-4 ">
@@ -33,7 +33,7 @@
 				</div>
 				<hr>
 				
-				<!-- Modal for job type -->
+				<!-- Modal for person details -->
 <div class="modal fade" id="myPersonDetailsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -52,6 +52,56 @@
         <button type="button" id="modalTextCenter"  class="btn btn-primary" data-dismiss="modal">Close</button>
        
        <a class="personDetailsDeleteByAdmin btn btn-primary" href="j"><span id="modalTextCenter">Delete</span></a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal -->
+				<!-- Modal for rules -->
+<div class="modal fade" id="myRulesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal" 
+	        
+	        aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       <h4 id="modalTextCenter" class="modal-title modalTextCenter">Confirmation for deleting</h4>
+      </div>
+      <div class="modal-body">
+        <h4 id="modalTextCenter">Do you want to delete id number </h4>
+        <h4 id="modalTextCenter" class="rulesDeleteByAdminId"></h4>
+          <h4 id="modalTextCenter">??? </h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="modalTextCenter"  class="btn btn-primary" data-dismiss="modal">Close</button>
+       
+       <a class="rulesDeleteByAdmin btn btn-primary" href="j"><span id="modalTextCenter">Delete</span></a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal -->
+				<!-- Modal for notification -->
+<div class="modal fade" id="myNotificationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal" 
+	        
+	        aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       <h4 id="modalTextCenter" class="modal-title modalTextCenter">Confirmation for deleting</h4>
+      </div>
+      <div class="modal-body">
+        <h4 id="modalTextCenter">Do you want to delete id number </h4>
+        <h4 id="modalTextCenter" class="notificationDeleteByAdminId"></h4>
+          <h4 id="modalTextCenter">??? </h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="modalTextCenter"  class="btn btn-primary" data-dismiss="modal">Close</button>
+       
+       <a class="notificationDeleteByAdmin btn btn-primary" href="j"><span id="modalTextCenter">Delete</span></a>
         
       </div>
     </div>
@@ -179,10 +229,17 @@ th:value="${persondetails.contact}" placeholder=" Enter contact" autocomplete="o
 	</div>
 	</div>
 	<hr>
+	<!-- heading for person details table-->
+		<div class="row">
+	<div class=" col-sm-5 col-sm-offset-4  col-md-5 col-md-offset-4  col-lg-5 col-lg-offset-4 ">
+	
+			
+	<h2 id="homeTitle">You can manage person details </h2>
+	</div>
+	</div>
 	<!-- table for person details -->
 <div class="row">
 <div class=" col-md-10 col-md-offset-1  col-lg-10 col-lg-offset-1">
-
 
 <div class="table-responsive">
 
@@ -191,7 +248,7 @@ th:value="${persondetails.contact}" placeholder=" Enter contact" autocomplete="o
 <thead>
 
 <tr>
-
+<th>ID</th>
 <th>Images</th>
 <th>Name</th>
 <th>Degree</th>
@@ -213,6 +270,18 @@ th:value="${persondetails.contact}" placeholder=" Enter contact" autocomplete="o
 </div>
 
 	<hr>
+	
+	
+		<!-- heading for rules form-->
+		<div class="row">
+	<div class=" col-sm-4 col-sm-offset-5  col-md-4 col-md-offset-5  col-lg-4 col-lg-offset-5 ">
+	
+			
+	<h2 id="homeTitle">You can add some rules </h2>
+	</div>
+	</div>
+	
+	
 					 <!-- Form form for rules -->
 					 <div class="row">
 	<div class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
@@ -268,8 +337,56 @@ th:value="${rules.rule}" placeholder=" Enter your rules" autocomplete="off"></te
 				
 	</div>
 	</div>
+	
+	<!-- heading for rules table-->
+		<div class="row">
+	<div class=" col-sm-5 col-sm-offset-4  col-md-5 col-md-offset-4  col-lg-5 col-lg-offset-4 ">
+	
+			
+	<h2 id="homeTitle">You can manage some rules </h2>
+	</div>
+	</div>
+	<!-- table for rules -->
+	<div class="row">
+<div class=" col-md-10 col-md-offset-1  col-lg-10 col-lg-offset-1">
+
+<div class="table-responsive">
+
+<table id="rulesTable" class="table table-striped table-bordered">
+
+<thead>
+
+<tr>
+<th>ID</th>
+<th>Rules</th>
+<th>Last modified date</th>
+<th>Edit,Delete</th>
+</tr>
+</thead>
+
+</table>
+
+
+
+
+</div>
+</div>
+</div>
+	
 	<hr>
-			 <!-- well for notification -->
+	
+	<!-- heading for notification form-->
+		<div class="row">
+	<div class=" col-sm-5 col-sm-offset-4  col-md-5 col-md-offset-4  col-lg-5 col-lg-offset-4 ">
+	
+			
+	<h2 id="homeTitle">You can add various notification  </h2>
+	</div>
+	</div>
+	
+	
+	
+			 <!-- form for notification -->
 					 <div class="row">
 	<div class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
 					   
@@ -324,8 +441,73 @@ th:value="${notifications.notification}" placeholder=" Enter your notification" 
 				
 	</div>
 	</div>
-	<hr>
+	<!-- heading for notification table-->
+		<div class="row">
+	<div class=" col-sm-5 col-sm-offset-4  col-md-5 col-md-offset-4  col-lg-5 col-lg-offset-4 ">
+	
+			
+	<h2 id="homeTitle">You can manage some notification </h2>
+	</div>
+	</div>
+	
+	<!-- table for notification -->
+	<div class="row">
+<div class=" col-md-10 col-md-offset-1  col-lg-10 col-lg-offset-1">
 
+<div class="table-responsive">
+
+<table id="notificationTable" class="table table-striped table-bordered">
+
+<thead>
+
+<tr>
+<th>ID</th>
+<th>Notification</th>
+<th>Last modified date</th>
+<th>Edit,Delete</th>
+</tr>
+</thead>
+
+</table>
+
+
+
+
+</div>
+</div>
+</div>
+	
+	<hr>
+		<!-- Modal for notification -->
+<div class="modal fade" id="mySerialModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal" 
+	        
+	        aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       <h4 id="modalTextCenter" class="modal-title modalTextCenter">Confirmation for deleting</h4>
+      </div>
+      <div class="modal-body">
+        <h4 id="modalTextCenter">Do you want to truncate all serial </h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="modalTextCenter"  class="btn btn-primary" data-dismiss="modal">Close</button>
+       
+       <a class="serialDeleteByAdmin btn btn-primary" href="j"><span id="modalTextCenter">Delete</span></a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal -->
+
+
+	
+<div class="well">
+<button class="btn btn-primary tag_cnt btn btn-danger"  onclick="showSerialModal()"
+type="button" value="1"><span class="glyphicon glyphicon-trash"></span></button>'
+</div>
 
 	</div>
 	<div th:replace="fragments/footer-js::footer-js"></div>
