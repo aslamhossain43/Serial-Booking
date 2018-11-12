@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header-css :: header-css(title='Home Page')"></head>
+
+<body>
+<div class="preLoader">	</div> 
+	<div th:replace="fragments/nav-bar :: nav-bar"></div>
+
+
+	<div class="container-fluid">
+		<br><br><br><br>
+			<!-- message -->
+				<div class="row">
+					<div
+						class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
+						
+						<div th:if="${message}">
+						       <br><br><br><br>
+							<div id="textCenter" th:text="${message}"
+								class="alert alert-info fade in "></div>
+						
+						</div>
+					</div>
+				</div>
+				<!-- heading -->
+				<div class="row">
+	<div class=" col-sm-5 col-sm-offset-5  col-md-5 col-md-offset-5  col-lg-5 col-lg-offset-5 ">
+	
+			
+	<h2 id="homeTitle">You can update your serial </h2>
+	<br>
+	</div>
+	</div>
+				
+ <!-- start serial booking-->
+ <div class="row">
+ <div class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
+ 
+ <fieldset>
+
+
+<form class="form-horizontal" role="form" th:action="@{/sendContact}" method="post">
+
+
+
+
+
+
+<div class="form-group">
+<label for="contact" class="col-sm-3 col-md-3 col-lg-3 control-label">Your contact : </label>
+<div class="col-sm-8 col-md-8 col-lg-8 ">
+<input type="text" class="form-control" id="contact"  name="contact" placeholder=" Enter your contact" autocomplete="off">
+
+</div>
+</div>
+
+<input type="hidden" class="form-control" name="id" th:value="${id}">
+
+<div class="forn-group">
+<div class="col-sm-2 col-sm-offset-6  col-md-2 col-md-offset-6  col-lg-2 col-lg-offset-6">
+<button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</div>
+
+</form>
+</fieldset>
+ </div>
+ </div>
+ 
+
+			</div>
+	
+	<div th:replace="fragments/footer-js::footer-js"></div>
+
+</body>
+
+</html>

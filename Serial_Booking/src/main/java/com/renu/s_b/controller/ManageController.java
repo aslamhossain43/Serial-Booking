@@ -251,7 +251,7 @@ public String addSerialBooking(@Valid @ModelAttribute("serialbooking")SerialBook
 @RequestMapping(value="/serialDeleteByAdmin")
 public String deleteSerial(Model model) {
 	LOGGER.info("From class ManageController,method : deleteSerial()");
-	
+	serialBookingRepository.deleteAll();
 	model.addAttribute("persondetails",new PersonDetails());
 	model.addAttribute("rules",new Rules());
 	model.addAttribute("notifications",new Notification());
@@ -261,6 +261,45 @@ public String deleteSerial(Model model) {
 	model.addAttribute("jsonurlS","/getAllSerial");
 	return "manage";
 }
+
+
+
+//FOR UPDATING 
+@RequestMapping(value="/updateSerial")
+public String getContact(@RequestParam("id") Long id,Model model) {
+	LOGGER.info("From class ManageController,method : getContact()");
+    model.addAttribute("id",id);
+    return "showPreUpdate";
+	
+}
+
+//FOR UPDATE SERIAL BOOKING
+@RequestMapping(value="/sendContact")
+public String getUpdateForm(@RequestParam("id") Long id,@RequestParam("contact")String contact,Model model) {
+	LOGGER.info("From class ManageController,method : getUpdateForm()");
+	SerialBooking serialBookingById=serialBookingRepository.getById(id);
+	String contactById=serialBookingById.getContact();
+	SerialBooking serialBookingByContact=serialBookingRepository.getByContact(contact);
+	if (serialBookingByContact==null) {
+		model.addAttribute("id",id);
+    	model.addAttribute("message","Your contact is wrong !!!");
+    	return "showPreUpdate";
+    }
+    
+	String contactByContact=serialBookingByContact.getContact();
+    if (contactById==contactByContact) {
+	model.addAttribute("serialbooking",serialBookingById);
+	return "home";
+	}else {
+		model.addAttribute("message","Your contact is wrong !!!");
+		return "showPreUpdate";
+	}
+    
+	
+}
+
+
+
 
 
 }

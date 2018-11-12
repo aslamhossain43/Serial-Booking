@@ -19,7 +19,9 @@ public class SerialBooking extends BaseSerialBooking<Long> {
 	@Min(1)
 	@Max(130)
 	@NotNull
-	private int age;
+	private Integer age;
+	@NotBlank(message="Enter your phone")
+	private String contact;
 	@NotBlank(message="Enter your visit time")
 	private String visitTime;
 	public SerialBooking() {}
@@ -47,10 +49,19 @@ public class SerialBooking extends BaseSerialBooking<Long> {
 	public void setVisitTime(String visitTime) {
 		this.visitTime = visitTime;
 	}
+	public String getContact() {
+		return contact;
+	}
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
 	@Override
 	public String toString() {
-		return "SerialBooking [id=" + id + ", name=" + name + ", age=" + age + ", visitTime=" + visitTime + "]";
+		return "SerialBooking [id=" + id + ", name=" + name + ", age=" + age + ", contact=" + contact + ", visitTime="
+				+ visitTime + "]";
 	}
+	
+	
 	
 	
 	
