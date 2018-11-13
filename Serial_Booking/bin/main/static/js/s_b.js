@@ -325,3 +325,165 @@ function showSerialModal()
 	 $('.serialDeleteByAdmin').attr('href','/serialDeleteByAdmin');
 	 $("#mySerialModal").modal();
 }
+
+
+
+
+
+//serial manage by doctor
+
+var table=$('#serialManageTable');
+
+if(table.length){
+
+	var jsonUrl=jsonurlSMBD;
+	
+
+	 table.DataTable({
+  lengthMenu:[[30,73,-1],['30 files','73 files','All']],
+  pageLength:30,
+  ajax:{
+	  url:jsonUrl,
+	  dataSrc : ''
+	 
+	  
+  },
+  columns : [
+
+	   {
+		 data:'id',  
+	   },
+	 
+	  {
+		  
+		  data:'name',
+		 
+	  }
+	   ,
+		 
+		  {
+			  
+			  data:'age',
+			 
+		  },
+	 
+	  {
+		  
+		  data:'visitTime',
+		 
+	  },
+	  {
+		  data:'lastModifiedDate'
+		 
+	  } ,
+	  {
+		  data:'id',
+		  mRender:function(data){
+			  				
+			  var str='';
+		
+			   
+			  str+='<button id="editTrauncate" class="btn btn-primary tag_cnt btn btn-danger"  onclick="showSerialManageModal('+data+')" type="button" value="1"><span class="glyphicon glyphicon-trash"></span></button>';
+								
+			  return str;
+			
+			  
+		  }
+		 
+	  }
+	  
+	 
+	 
+  ]
+	
+		
+});
+} 
+
+
+/*bootstrap modal*/
+
+/*for notification*/
+function showSerialManageModal(data)
+{
+   //you can do anything with data, or pass more data to this function. i set this data to modal header for example
+	 $('.serialManageDeleteByAdmin').attr('href','/serialManageDeleteByAdmin?id='+data);
+	$("#mySerialManageModal .serialManageDeleteByAdminId").html(data)
+   $("#mySerialManageModal").modal();
+}
+
+
+
+
+
+var table=$('#headingTable');
+
+if(table.length){
+
+	var jsonUrl=jsonurlH;
+	
+
+	 table.DataTable({
+  lengthMenu:[[30,73,-1],['30 files','73 files','All']],
+  pageLength:30,
+  ajax:{
+	  url:jsonUrl,
+	  dataSrc : ''
+	 
+	  
+  },
+  columns : [
+
+	   {
+		 data:'id',  
+	   },
+	 
+	  {
+		  
+		  data:'heading',
+		 
+	  }
+	,
+	  {
+		  data:'id',
+		  mRender:function(data){
+			  				
+			  var str='';
+		
+						
+			  str+='<a href="/updateHeading?id='+data+'" id="editTrauncate" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>';
+			   
+			  str+='<button id="editTrauncate" class="btn btn-primary tag_cnt btn btn-danger"  onclick="showHeadingModal('+data+')" type="button" value="1"><span class="glyphicon glyphicon-trash"></span></button>';
+								
+			  return str;
+			
+			  
+		  }
+		 
+	  }
+	  
+	 
+	 
+  ]
+	
+		
+});
+} 
+
+
+/*bootstrap modal*/
+
+/*for notification*/
+function showHeadingModal(data)
+{
+   //you can do anything with data, or pass more data to this function. i set this data to modal header for example
+	 $('.headingDeleteByAdmin').attr('href','/headingDeleteByAdmin?id='+data);
+	$("#myHeadingModal .headingDeleteByAdminId").html(data)
+   $("#myHeadingModal").modal();
+}
+
+
+
+
+
+

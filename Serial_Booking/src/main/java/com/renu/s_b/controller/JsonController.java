@@ -9,10 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.renu.s_b.models.Heading;
 import com.renu.s_b.models.Notification;
 import com.renu.s_b.models.PersonDetails;
 import com.renu.s_b.models.Rules;
 import com.renu.s_b.models.SerialBooking;
+import com.renu.s_b.repositories.HeadingReapository;
 import com.renu.s_b.repositories.NotificationRepository;
 import com.renu.s_b.repositories.PersonDetailsRepository;
 import com.renu.s_b.repositories.RulesRepository;
@@ -29,6 +31,11 @@ RulesRepository rulesRepository;
 NotificationRepository notificationRepository;
 @Autowired
 SerialBookingRepository serialBookingRepository;
+@Autowired
+HeadingReapository headingReapository;
+
+
+
 @RequestMapping(value="/getAllPersonDetails")
 @ResponseBody
 public List<PersonDetails>getAllPersonDetails(){
@@ -61,7 +68,16 @@ public List<Notification>getAllNotification(){
 	
 	
 }
-
+@RequestMapping(value="/getHeading")
+@ResponseBody
+public List<Heading>getHeading(){
+	LOGGER.info("From class JsonController,method getHeading()");
+	List<Heading>headings=headingReapository.findAll();
+	return headings;
+	
+	
+	
+}
 @RequestMapping(value="/getAllSerial")
 @ResponseBody
 public List<SerialBooking>getAllSerial(){

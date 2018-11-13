@@ -12,6 +12,7 @@ background:url(../images/loader.gif)50% no-repeat #fff
 }
 
 #homeTitle{
+text-align:center;
 font-style: italic;
 color:blue;
 
@@ -47,4 +48,25 @@ color:blue;
 }
 #serialDeleteButton{
 margin-left:48%;
+}
+#ruleHeading{
+text-align:center;
+
+}
+#rule{
+text-align:center;
+color:blue;
+font-size:40px
+
+}
+#notificationHeading{
+text-align:center;
+}
+#notification{
+color:red;
+text-align:center;
+font-size:40px;
+}
+#textCenter{
+text-align:center;
 }

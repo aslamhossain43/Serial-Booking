@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.renu.s_b.models.Heading;
 import com.renu.s_b.models.Notification;
 import com.renu.s_b.models.PersonDetails;
 import com.renu.s_b.models.Rules;
 import com.renu.s_b.models.SerialBooking;
+import com.renu.s_b.repositories.HeadingReapository;
 import com.renu.s_b.repositories.NotificationRepository;
 import com.renu.s_b.repositories.PersonDetailsRepository;
 import com.renu.s_b.repositories.RulesRepository;
@@ -41,6 +43,9 @@ RulesRepository rulesRepository;
 NotificationRepository notificationRepository;
 @Autowired
 SerialBookingRepository serialBookingRepository;
+@Autowired
+HeadingReapository headingReapository;
+
 
 @RequestMapping(value="/aassllaamm")
 public String showManage(Model model) {
@@ -48,9 +53,12 @@ public String showManage(Model model) {
 	model.addAttribute("persondetails",new PersonDetails());
 	model.addAttribute("rules",new Rules());
 	model.addAttribute("notifications",new Notification());
+	model.addAttribute("headings",new Heading());
 	model.addAttribute("jsonurlPD","/getAllPersonDetails");
 	model.addAttribute("jsonurlR","/getAllRules");
 	model.addAttribute("jsonurlN","/getAllNotification");
+	model.addAttribute("jsonurlSMBD","/getAllSerial");
+	model.addAttribute("jsonurlH","/getHeading");
 	return "manage";
 }
 //GET PERSONDETAILS
@@ -76,6 +84,13 @@ List<Notification>notifications=notificationRepository.findAll();
 	return notifications;
 }
 
+//GET HEADING
+@ModelAttribute("heading")
+public List<Heading>getHeading(){
+List<Heading>headings=headingReapository.findAll();	
+	
+	return headings;
+}
 
 
 
@@ -298,8 +313,69 @@ public String getUpdateForm(@RequestParam("id") Long id,@RequestParam("contact")
 	
 }
 
+//FOR SERIAL MANAGE DELETE BY ADMIN
+@RequestMapping(value="/serialManageDeleteByAdmin")
+public String serialManageDelete(@RequestParam("id")Long id,Model model) {
+	LOGGER.info("From class ManageController,method : serialManageDelete()");
+	SerialBooking serialBooking=serialBookingRepository.getById(id);
+	
+serialBookingRepository.delete(serialBooking);
+	model.addAttribute("message","Id  "+id+"  has been deleted successfully !!!");
+	model.addAttribute("persondetails",new PersonDetails());
+	model.addAttribute("rules",new Rules());
+	model.addAttribute("notifications",new Notification());
+	
+	return "manage";
+}
+
+//FOR HEADING
+//ADD HEADING
+@RequestMapping(value="/addHeading",method=RequestMethod.POST)
+public String addHeading(@Valid @ModelAttribute("headings") Heading heading,BindingResult bindingResult,Model model) {
+	LOGGER.info("From class ManageController,method : addHeading()");
+	model.addAttribute("persondetails",new PersonDetails());
+	model.addAttribute("rules",new Rules());
+	model.addAttribute("notifications",new Notification());
+	model.addAttribute("heading", new  Heading());
+	if (bindingResult.hasErrors()) {
+		model.addAttribute("message","Your operation has not been completed successfully !!!");
+		return "manage";
+	}
+	headingReapository.save(heading);
+	model.addAttribute("message","Your operation has been completed successfully !!!");
+	return "manage";
+}
+
+//FOR HEADING UPDATE
+@RequestMapping(value="/updateHeading")
+public String updateHeading(@RequestParam("id")Long id,Model model) {
+	LOGGER.info("From class ManageController,method : updateHeading()");
+Heading heading=headingReapository.getById(id);
+model.addAttribute("rules",new Rules());
+model.addAttribute("notifications",new Notification());
+	model.addAttribute("headings",heading);
+	
+model.addAttribute("persondetails", new PersonDetails());
+
+	
+	return "manage";
+}
 
 
 
+//FOR HEADING DELETE
+@RequestMapping(value="/headingDeleteByAdmin")
+public String deleteHeading(@RequestParam("id")Long id,Model model) {
+	LOGGER.info("From class ManageController,method : deleteHeading()");
+	Heading heading=headingReapository.getById(id);
+	
+headingReapository.delete(heading);
+	model.addAttribute("message","Id  "+id+"  has been deleted successfully !!!");
+	model.addAttribute("persondetails",new PersonDetails());
+	model.addAttribute("rules",new Rules());
+	model.addAttribute("notifications",new Notification());
+	model.addAttribute("headings",new Heading());
+	return "manage";
+}
 
 }
