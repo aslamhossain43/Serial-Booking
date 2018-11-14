@@ -28,12 +28,13 @@
 				<div th:each="h:${heading}" class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
 					    <br><br><br>
 			
-						<h4 id="homeTitle" th:text="${h.getHeading()}"></h4>
+						<h4 id="homeHeading" th:text="${h.getHeading()}"></h4>
 					   <br>
 				</div>
 				</div>
-				
-				
+				<br>
+				<hr>
+				<br>
 				 <!-- Left-aligned media object -->
 				 <div class="row">
 	<div th:each="pd:${allpersondetails}" class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
@@ -88,7 +89,7 @@
 					class=" col-sm-4 col-sm-offset-4  col-md-4 col-md-offset-4  col-lg-4 col-lg-offset-4 ">
 					    <br><br><br>
 			
-						<h2 id="homeTitle"> You can add your serial</h2>
+						<h2 id="homeAllreadyBookedForm"> You can add your serial</h2>
 					   </div>
 				</div>
 				
@@ -101,7 +102,7 @@
  <fieldset>
 
 
-<form class="form-horizontal" role="form" th:action="@{/addSerialBooking}" 
+<form name="serialForm" class="form-horizontal" role="form" th:action="@{/addSerialBooking}" 
 th:object="${serialbooking}" method="post">
 
 
@@ -136,7 +137,7 @@ th:object="${serialbooking}" method="post">
  <option th:value="Second-visit" th:text="Second-visit"></option>
 
 </select>
-<p id="" th:if="${#fields.hasErrors('visitTime')}" th:errors="*{visitTime}"></p>
+<p id="validationText" class="label label-danger" th:if="${#fields.hasErrors('visitTime')}" th:errors="*{visitTime}"></p>
 </div>
 </div>
 
@@ -147,7 +148,7 @@ th:object="${serialbooking}" method="post">
 <div class="col-sm-8 col-md-8 col-lg-8 ">
 <input type="text" class="form-control" id="name"  th:field="*{name}" 
 th:value="${serialbooking.name}" placeholder=" Enter your name" autocomplete="off">
-<p id="" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+<p id="validationText" class="label label-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
 
 </div>
 </div>
@@ -158,7 +159,7 @@ th:value="${serialbooking.name}" placeholder=" Enter your name" autocomplete="of
 <div class="col-sm-8 col-md-8 col-lg-8 ">
 <input type="text" class="form-control" id="age" th:field="*{age}" 
 th:value="${serialbooking.age}" placeholder=" Enter your age" autocomplete="off">
-<p id="" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></p>
+<p id="validationText" class="label label-danger" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></p>
 
 </div>
 </div>
@@ -167,8 +168,8 @@ th:value="${serialbooking.age}" placeholder=" Enter your age" autocomplete="off"
 <label for="contact" class="col-sm-3 col-md-3 col-lg-3  control-label">Contact : </label>
 <div class="col-sm-8 col-md-8 col-lg-8 ">
 <input type="text" class="form-control" id="contact" th:field="*{contact}" 
-th:value="${serialbooking.contact}" placeholder=" Enter your contact" autocomplete="off">
-<p id="" th:if="${#fields.hasErrors('contact')}" th:errors="*{contact}"></p>
+th:value="${serialbooking.contact}" placeholder=" Enter your phone or email" autocomplete="off">
+<p id="validationText" class="label label-danger" th:if="${#fields.hasErrors('contact')}" th:errors="*{contact}"></p>
 
 </div>
 </div>
@@ -192,7 +193,7 @@ th:value="${serialbooking.contact}" placeholder=" Enter your contact" autocomple
 	<div class=" col-sm-5 col-sm-offset-4  col-md-5 col-md-offset-4  col-lg-5 col-lg-offset-4 ">
 	
 			
-	<h2 id="homeTitle">Already booked serials </h2>
+	<h2 id="homeAllreadyBookedTable">Already booked serials </h2>
 	</div>
 	</div>
 <!-- table for serial booking -->

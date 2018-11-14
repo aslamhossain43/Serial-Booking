@@ -102,15 +102,24 @@ List<Heading>headings=headingReapository.findAll();
 public String showManageForPersonDetals(@Valid @ModelAttribute("persondetails") PersonDetails personDetails,
 		BindingResult bindingResult,HttpServletRequest httpServletRequest,Model model) {
 	LOGGER.info("From class ManageController,method : showManageForPersonDetails()");
-	model.addAttribute("persondetails",new PersonDetails());
 	model.addAttribute("rules",new Rules());
 	model.addAttribute("notifications",new Notification());
+	model.addAttribute("headings",new Heading());
+	model.addAttribute("jsonurlPD","/getAllPersonDetails");
+	model.addAttribute("jsonurlR","/getAllRules");
+	model.addAttribute("jsonurlN","/getAllNotification");
+	model.addAttribute("jsonurlSMBD","/getAllSerial");
+	model.addAttribute("jsonurlH","/getHeading");
+	//file validation must be before binding result
+	if (personDetails.getId()==null) {
+		
+		new ImageValidator().validate(personDetails,bindingResult);
+	}
 	if (bindingResult.hasErrors()) {
 		model.addAttribute("message","Your operation has not been completed successfully !!!");
 		return "manage";
 	}
 	if (personDetails.getId()==null) {
-		new ImageValidator().validate(personDetails,bindingResult);
 		personDetailsRepository.save(personDetails);
 		personDetails.setId(null);
 	}else {
@@ -131,9 +140,13 @@ public String updatePersonDetails(@RequestParam("id")Long id,Model model) {
     PersonDetails personDetails=personDetailsRepository.getById(id);
     model.addAttribute("rules",new Rules());
 	model.addAttribute("notifications",new Notification());
-	
+	model.addAttribute("headings",new Heading());
     model.addAttribute("persondetails", personDetails);
-    
+    model.addAttribute("jsonurlPD","/getAllPersonDetails");
+	model.addAttribute("jsonurlR","/getAllRules");
+	model.addAttribute("jsonurlN","/getAllNotification");
+	model.addAttribute("jsonurlSMBD","/getAllSerial");
+	model.addAttribute("jsonurlH","/getHeading");
 	
 	return "manage";
 }
@@ -152,7 +165,12 @@ public String deletePersonDetails(@RequestParam("id")Long id,Model model) {
 	model.addAttribute("persondetails",new PersonDetails());
 	model.addAttribute("rules",new Rules());
 	model.addAttribute("notifications",new Notification());
-	
+	model.addAttribute("headings",new Heading());
+	model.addAttribute("jsonurlPD","/getAllPersonDetails");
+	model.addAttribute("jsonurlR","/getAllRules");
+	model.addAttribute("jsonurlN","/getAllNotification");
+	model.addAttribute("jsonurlSMBD","/getAllSerial");
+	model.addAttribute("jsonurlH","/getHeading");
 	return "manage";
 }
 //FOR RULES
@@ -161,8 +179,13 @@ public String deletePersonDetails(@RequestParam("id")Long id,Model model) {
 public String addRules(@Valid @ModelAttribute("rules") Rules rules,BindingResult bindingResult,Model model) {
 	LOGGER.info("From class ManageController,method : addRules()");
 	model.addAttribute("persondetails",new PersonDetails());
-	model.addAttribute("rules",new Rules());
 	model.addAttribute("notifications",new Notification());
+	model.addAttribute("headings",new Heading());
+	model.addAttribute("jsonurlPD","/getAllPersonDetails");
+	model.addAttribute("jsonurlR","/getAllRules");
+	model.addAttribute("jsonurlN","/getAllNotification");
+	model.addAttribute("jsonurlSMBD","/getAllSerial");
+	model.addAttribute("jsonurlH","/getHeading");
 	if (bindingResult.hasErrors()) {
 		model.addAttribute("message","Your operation has not been completed successfully !!!");
 		return "manage";
@@ -181,7 +204,12 @@ public String updateRules(@RequestParam("id")Long id,Model model) {
 	model.addAttribute("notifications",new Notification());
 	
   model.addAttribute("persondetails", new PersonDetails());
-  
+  model.addAttribute("headings",new Heading());
+  model.addAttribute("jsonurlPD","/getAllPersonDetails");
+	model.addAttribute("jsonurlR","/getAllRules");
+	model.addAttribute("jsonurlN","/getAllNotification");
+	model.addAttribute("jsonurlSMBD","/getAllSerial");
+	model.addAttribute("jsonurlH","/getHeading");
 	
 	return "manage";
 }
@@ -196,7 +224,12 @@ public String deleteRules(@RequestParam("id")Long id,Model model) {
 	model.addAttribute("persondetails",new PersonDetails());
 	model.addAttribute("rules",new Rules());
 	model.addAttribute("notifications",new Notification());
-	
+	model.addAttribute("headings",new Heading());
+	model.addAttribute("jsonurlPD","/getAllPersonDetails");
+	model.addAttribute("jsonurlR","/getAllRules");
+	model.addAttribute("jsonurlN","/getAllNotification");
+	model.addAttribute("jsonurlSMBD","/getAllSerial");
+	model.addAttribute("jsonurlH","/getHeading");
 	return "manage";
 }
 
@@ -207,7 +240,12 @@ public String addNotification(@Valid @ModelAttribute("notifications") Notificati
 	LOGGER.info("From class ManageController,method : addNotification()");
 	model.addAttribute("persondetails",new PersonDetails());
 	model.addAttribute("rules",new Rules());
-	model.addAttribute("notifications",new Notification());
+	model.addAttribute("headings",new Heading());
+	model.addAttribute("jsonurlPD","/getAllPersonDetails");
+	model.addAttribute("jsonurlR","/getAllRules");
+	model.addAttribute("jsonurlN","/getAllNotification");
+	model.addAttribute("jsonurlSMBD","/getAllSerial");
+	model.addAttribute("jsonurlH","/getHeading");
 	if (bindingResult.hasErrors()) {
 		model.addAttribute("message","Your operation has not been completed successfully !!!");
 		return "manage";
@@ -227,7 +265,12 @@ model.addAttribute("rules",new Rules());
 	model.addAttribute("notifications",notification);
 	
 model.addAttribute("persondetails", new PersonDetails());
-
+model.addAttribute("headings",new Heading());
+model.addAttribute("jsonurlPD","/getAllPersonDetails");
+model.addAttribute("jsonurlR","/getAllRules");
+model.addAttribute("jsonurlN","/getAllNotification");
+model.addAttribute("jsonurlSMBD","/getAllSerial");
+model.addAttribute("jsonurlH","/getHeading");
 	
 	return "manage";
 }
@@ -242,7 +285,12 @@ notificationRepository.delete(notification);
 	model.addAttribute("persondetails",new PersonDetails());
 	model.addAttribute("rules",new Rules());
 	model.addAttribute("notifications",new Notification());
-	
+	model.addAttribute("headings",new Heading());
+	model.addAttribute("jsonurlPD","/getAllPersonDetails");
+	model.addAttribute("jsonurlR","/getAllRules");
+	model.addAttribute("jsonurlN","/getAllNotification");
+	model.addAttribute("jsonurlSMBD","/getAllSerial");
+	model.addAttribute("jsonurlH","/getHeading");
 	return "manage";
 }
 
@@ -253,12 +301,28 @@ notificationRepository.delete(notification);
 @RequestMapping(value="/addSerialBooking",method=RequestMethod.POST)
 public String addSerialBooking(@Valid @ModelAttribute("serialbooking")SerialBooking serialBooking,BindingResult bindingResult,Model model) {
 	LOGGER.info("From class ManageController,method : addSerialBooking()");
-	model.addAttribute("serialbooking",new SerialBooking());
+	model.addAttribute("rules",new Rules());
+	model.addAttribute("notifications",new Notification());
+	model.addAttribute("headings",new Heading());
+	model.addAttribute("jsonurlPD","/getAllPersonDetails");
+	model.addAttribute("jsonurlR","/getAllRules");
+	model.addAttribute("jsonurlN","/getAllNotification");
+	model.addAttribute("jsonurlS","/getAllSerial");
+	model.addAttribute("jsonurlH","/getHeading");
 	if (bindingResult.hasErrors()) {
 		model.addAttribute("message","Your operation has not been completed successfully !!!");
 		return "home";
 	}
+	//check contact already exist or not
+	SerialBooking sBooking=serialBookingRepository.getByContact(serialBooking.getContact());
+	if (sBooking!=null) {
+		model.addAttribute("message","This contact number is already exist !!!");
+		serialBooking.setId(null);
+		return "home";
+	}
+
 	serialBookingRepository.save(serialBooking);
+	serialBooking.setId(null);
 	model.addAttribute("message","Your operation has been completed successfully !!!");
 	return "home";
 }
@@ -266,14 +330,16 @@ public String addSerialBooking(@Valid @ModelAttribute("serialbooking")SerialBook
 @RequestMapping(value="/serialDeleteByAdmin")
 public String deleteSerial(Model model) {
 	LOGGER.info("From class ManageController,method : deleteSerial()");
-	serialBookingRepository.deleteAll();
 	model.addAttribute("persondetails",new PersonDetails());
 	model.addAttribute("rules",new Rules());
 	model.addAttribute("notifications",new Notification());
+	model.addAttribute("headings",new Heading());
+	serialBookingRepository.deleteAll();
 	model.addAttribute("jsonurlPD","/getAllPersonDetails");
 	model.addAttribute("jsonurlR","/getAllRules");
 	model.addAttribute("jsonurlN","/getAllNotification");
 	model.addAttribute("jsonurlS","/getAllSerial");
+	model.addAttribute("jsonurlH","/getHeading");
 	return "manage";
 }
 
@@ -304,6 +370,7 @@ public String getUpdateForm(@RequestParam("id") Long id,@RequestParam("contact")
 	String contactByContact=serialBookingByContact.getContact();
     if (contactById==contactByContact) {
 	model.addAttribute("serialbooking",serialBookingById);
+	model.addAttribute("jsonurlS","/getAllSerial");
 	return "home";
 	}else {
 		model.addAttribute("message","Your contact is wrong !!!");
@@ -319,12 +386,17 @@ public String serialManageDelete(@RequestParam("id")Long id,Model model) {
 	LOGGER.info("From class ManageController,method : serialManageDelete()");
 	SerialBooking serialBooking=serialBookingRepository.getById(id);
 	
-serialBookingRepository.delete(serialBooking);
 	model.addAttribute("message","Id  "+id+"  has been deleted successfully !!!");
 	model.addAttribute("persondetails",new PersonDetails());
 	model.addAttribute("rules",new Rules());
 	model.addAttribute("notifications",new Notification());
-	
+	model.addAttribute("headings", new  Heading());
+	serialBookingRepository.delete(serialBooking);
+	model.addAttribute("jsonurlPD","/getAllPersonDetails");
+	model.addAttribute("jsonurlR","/getAllRules");
+	model.addAttribute("jsonurlN","/getAllNotification");
+	model.addAttribute("jsonurlSMBD","/getAllSerial");
+	model.addAttribute("jsonurlH","/getHeading");
 	return "manage";
 }
 
@@ -336,7 +408,11 @@ public String addHeading(@Valid @ModelAttribute("headings") Heading heading,Bind
 	model.addAttribute("persondetails",new PersonDetails());
 	model.addAttribute("rules",new Rules());
 	model.addAttribute("notifications",new Notification());
-	model.addAttribute("heading", new  Heading());
+	model.addAttribute("jsonurlPD","/getAllPersonDetails");
+	model.addAttribute("jsonurlR","/getAllRules");
+	model.addAttribute("jsonurlN","/getAllNotification");
+	model.addAttribute("jsonurlSMBD","/getAllSerial");
+	model.addAttribute("jsonurlH","/getHeading");
 	if (bindingResult.hasErrors()) {
 		model.addAttribute("message","Your operation has not been completed successfully !!!");
 		return "manage";
@@ -356,7 +432,11 @@ model.addAttribute("notifications",new Notification());
 	model.addAttribute("headings",heading);
 	
 model.addAttribute("persondetails", new PersonDetails());
-
+model.addAttribute("jsonurlPD","/getAllPersonDetails");
+model.addAttribute("jsonurlR","/getAllRules");
+model.addAttribute("jsonurlN","/getAllNotification");
+model.addAttribute("jsonurlSMBD","/getAllSerial");
+model.addAttribute("jsonurlH","/getHeading");
 	
 	return "manage";
 }
@@ -375,6 +455,11 @@ headingReapository.delete(heading);
 	model.addAttribute("rules",new Rules());
 	model.addAttribute("notifications",new Notification());
 	model.addAttribute("headings",new Heading());
+	model.addAttribute("jsonurlPD","/getAllPersonDetails");
+	model.addAttribute("jsonurlR","/getAllRules");
+	model.addAttribute("jsonurlN","/getAllNotification");
+	model.addAttribute("jsonurlSMBD","/getAllSerial");
+	model.addAttribute("jsonurlH","/getHeading");
 	return "manage";
 }
 

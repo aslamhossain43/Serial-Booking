@@ -8,6 +8,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class SerialBooking extends BaseSerialBooking<Long> {
@@ -20,7 +21,8 @@ public class SerialBooking extends BaseSerialBooking<Long> {
 	@Max(130)
 	@NotNull
 	private Integer age;
-	@NotBlank(message="Enter your phone")
+	@NotBlank
+	@Size(min=11,max=11,message="Enter a correct phone or email")
 	private String contact;
 	@NotBlank(message="Enter your visit time")
 	private String visitTime;
@@ -49,6 +51,8 @@ public class SerialBooking extends BaseSerialBooking<Long> {
 	public void setVisitTime(String visitTime) {
 		this.visitTime = visitTime;
 	}
+
+
 	public String getContact() {
 		return contact;
 	}

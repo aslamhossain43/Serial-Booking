@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-public class Notification extends BaseNotification<Long> {
+public class Notification extends BaseNotification<Long>{
 
 	
 	@Id

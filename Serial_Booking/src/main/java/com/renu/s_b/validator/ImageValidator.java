@@ -3,14 +3,13 @@ package com.renu.s_b.validator;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import com.renu.s_b.controller.ManageController;
 import com.renu.s_b.models.PersonDetails;
 
 public class ImageValidator implements Validator{
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return ManageController.class.equals(clazz);
+		return PersonDetails.class.equals(clazz);
 	}
 
 	@Override

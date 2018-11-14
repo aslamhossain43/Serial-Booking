@@ -28,7 +28,7 @@
 					class=" col-sm-4 col-sm-offset-4  col-md-4 col-md-offset-4  col-lg-4 col-lg-offset-4 ">
 					    <br><br><br>
 			
-						<h2 id="homeTitle">You can add person details</h2>
+						<h2 id="managePersonDetailHeading">You can add person details</h2>
 					   </div>
 				</div>
 				<hr>
@@ -175,7 +175,7 @@ th:object="${persondetails}" method="post" enctype="multipart/form-data">
 <label for="image" class="col-sm-3 col-md-3 col-lg-3  control-label">Upload an image(mandatory) : </label>
 <div class="col-sm-8 col-md-8 col-lg-8 ">
 <input type="file" class="form-control" id="image" th:field="*{iFile}" autocomplete="off">
-<p id="" th:if="${#fields.hasErrors('iFile')}" th:errors="*{iFile}"></p>
+<p id="validationText" class="label label-danger" th:if="${#fields.hasErrors('iFile')}" th:errors="*{iFile}"></p>
 
 </div>
 </div>
@@ -183,11 +183,11 @@ th:object="${persondetails}" method="post" enctype="multipart/form-data">
 
 
 <div class="form-group">
-<label for="name" class="col-sm-3 col-md-3 col-lg-3 control-label">Name : </label>
+<label for="pName" class="col-sm-3 col-md-3 col-lg-3 control-label">Name : </label>
 <div class="col-sm-8 col-md-8 col-lg-8 ">
-<input type="text" class="form-control" id="name"  th:field="*{name}" 
+<input type="text" class="form-control" id="pName"  th:field="*{name}" 
 th:value="${persondetails.name}" placeholder=" Enter your Name" autocomplete="off">
-<p id="" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+<p id="validationText" class="label label-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
 
 </div>
 </div>
@@ -198,7 +198,7 @@ th:value="${persondetails.name}" placeholder=" Enter your Name" autocomplete="of
 <div class="col-sm-8 col-md-8 col-lg-8 ">
 <input type="text" class="form-control" id="degree" th:field="*{degree}" 
 th:value="${persondetails.degree}" placeholder=" Enter degree" autocomplete="off">
-<p id="" th:if="${#fields.hasErrors('degree')}" th:errors="*{degree}"></p>
+<p id="validationText" class="label label-danger" th:if="${#fields.hasErrors('degree')}" th:errors="*{degree}"></p>
 
 </div>
 </div>
@@ -209,7 +209,7 @@ th:value="${persondetails.degree}" placeholder=" Enter degree" autocomplete="off
 <div class="col-sm-8 col-md-8 col-lg-8 ">
 <input type="text" class="form-control" id="expert" th:field="*{expert}"
 th:value="${persondetails.expert}" placeholder=" Enter expert details" autocomplete="off">
-<p id="" th:if="${#fields.hasErrors('expert')}" th:errors="*{expert}"></p>
+<p id="validationText" class="label label-danger" th:if="${#fields.hasErrors('expert')}" th:errors="*{expert}"></p>
 
 </div>
 </div>
@@ -220,7 +220,7 @@ th:value="${persondetails.expert}" placeholder=" Enter expert details" autocompl
 <div class="col-sm-8 col-md-8 col-lg-8 ">
 <input type="text" class="form-control" id="chamberLocation" th:field="*{chamberLocation}" 
 th:value="${persondetails.chamberLocation}" placeholder=" Enter chamberLocation" autocomplete="off">
-<p id="" th:if="${#fields.hasErrors('chamberLocation')}" th:errors="*{chamberLocation}"></p>
+<p id="validationText" class="label label-danger" th:if="${#fields.hasErrors('chamberLocation')}" th:errors="*{chamberLocation}"></p>
 
 </div>
 </div>
@@ -228,11 +228,11 @@ th:value="${persondetails.chamberLocation}" placeholder=" Enter chamberLocation"
 
 
 <div class="form-group">
-<label for="contact" class="col-sm-3 col-md-3 col-lg-3  control-label">Contact : </label>
+<label for="pContact" class="col-sm-3 col-md-3 col-lg-3  control-label">Contact : </label>
 <div class="col-sm-8 col-md-8 col-lg-8 ">
-<input type="text" class="form-control" id="contact" th:field="*{contact}" 
-th:value="${persondetails.contact}" placeholder=" Enter contact" autocomplete="off">
-<p id="" th:if="${#fields.hasErrors('contact')}" th:errors="*{contact}"></p>
+<input type="text" class="form-control" id="pContact" th:field="*{contact}" 
+th:value="${persondetails.contact}" placeholder=" Enter phone or email" autocomplete="off">
+<p id="validationText" class="label label-danger" th:if="${#fields.hasErrors('contact')}" th:errors="*{contact}"></p>
 
 </div>
 </div>
@@ -258,7 +258,7 @@ th:value="${persondetails.contact}" placeholder=" Enter contact" autocomplete="o
 	<div class=" col-sm-5 col-sm-offset-4  col-md-5 col-md-offset-4  col-lg-5 col-lg-offset-4 ">
 	
 			
-	<h2 id="homeTitle">You can manage person details </h2>
+	<h2 id="managePersonDetailsTable">You can manage person details </h2>
 	</div>
 	</div>
 	<!-- table for person details -->
@@ -301,7 +301,7 @@ th:value="${persondetails.contact}" placeholder=" Enter contact" autocomplete="o
 	<div class=" col-sm-5 col-sm-offset-4  col-md-5 col-md-offset-4  col-lg-5 col-lg-offset-4 ">
 	
 			
-	<h2 id="homeTitle">You can add some rules </h2>
+	<h2 id="manageRuleHeading">You can add some rules </h2>
 	</div>
 	</div>
 	
@@ -341,7 +341,7 @@ th:object="${rules}" method="post">
 <div class="col-sm-8 col-md-8 col-lg-8 ">
 <textarea cols="80" rows="5" class="form-control" id="rules"  th:field="*{rule}" 
 th:value="${rules.rule}" placeholder=" Enter your rules" autocomplete="off"></textarea>
-<p id="" th:if="${#fields.hasErrors('rule')}" th:errors="*{rule}"></p>
+<p id="validationText" class="label label-danger" th:if="${#fields.hasErrors('rule')}" th:errors="*{rule}"></p>
 
 </div>
 </div>
@@ -367,7 +367,7 @@ th:value="${rules.rule}" placeholder=" Enter your rules" autocomplete="off"></te
 	<div class=" col-sm-5 col-sm-offset-4  col-md-5 col-md-offset-4  col-lg-5 col-lg-offset-4 ">
 	
 			
-	<h2 id="homeTitle">You can manage some rules </h2>
+	<h2 id="manageRuleTable">You can manage some rules </h2>
 	</div>
 	</div>
 	<!-- table for rules -->
@@ -404,7 +404,7 @@ th:value="${rules.rule}" placeholder=" Enter your rules" autocomplete="off"></te
 	<div class=" col-sm-5 col-sm-offset-4  col-md-5 col-md-offset-4  col-lg-5 col-lg-offset-4 ">
 	
 			
-	<h2 id="homeTitle">You can add various notification  </h2>
+	<h2 id="manageNotificationFormHeading">You can add various notification  </h2>
 	</div>
 	</div>
 	
@@ -441,11 +441,11 @@ th:object="${notifications}" method="post">
  
 
 <div class="form-group">
-<label for="notification" class="col-sm-3 col-md-3 col-lg-3 control-label">Notification : </label>
+<label for="notifications" class="col-sm-3 col-md-3 col-lg-3 control-label">Notification : </label>
 <div class="col-sm-8 col-md-8 col-lg-8 ">
-<textarea cols="80" rows="5"  class="form-control" id="notification"  th:field="*{notification}" 
+<textarea cols="80" rows="5"  class="form-control" id="notifications"  th:field="*{notification}" 
 th:value="${notifications.notification}" placeholder=" Enter your notification" autocomplete="off"></textarea>
-<p id="" th:if="${#fields.hasErrors('notification')}" th:errors="*{notification}"></p>
+<p id="validationText" class="label label-danger" th:if="${#fields.hasErrors('notification')}" th:errors="*{notification}"></p>
 
 </div>
 </div>
@@ -472,7 +472,7 @@ th:value="${notifications.notification}" placeholder=" Enter your notification" 
 	<div class=" col-sm-5 col-sm-offset-4  col-md-5 col-md-offset-4  col-lg-5 col-lg-offset-4 ">
 	
 			
-	<h2 id="homeTitle">You can manage some notification </h2>
+	<h2 id="manageNotificationTableHeading">You can manage some notification </h2>
 	</div>
 	</div>
 	<hr>
@@ -537,7 +537,7 @@ th:value="${notifications.notification}" placeholder=" Enter your notification" 
 	<div class=" col-sm-5 col-sm-offset-4  col-md-5 col-md-offset-4  col-lg-5 col-lg-offset-4 ">
 	
 			
-	<h2 id="homeTitle">You can manage some serials </h2>
+	<h2 id="manageSerialBookingHeading">You can manage some serials </h2>
 	</div>
 	</div>
 
@@ -604,6 +604,14 @@ th:value="${notifications.notification}" placeholder=" Enter your notification" 
 
 
 <hr>
+<!-- heading of heading form -->
+<div class="row">
+	<div class=" col-sm-5 col-sm-offset-4  col-md-5 col-md-offset-4  col-lg-5 col-lg-offset-4 ">
+	
+			
+	<h2 id="manageHeadingFormHeading">You can add heading </h2>
+	</div>
+	</div>
 	 <!-- form for heading -->
 					 <div class="row">
 	<div class=" col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3  col-lg-6 col-lg-offset-3 ">
@@ -633,7 +641,7 @@ th:object="${headings}" method="post">
 <div class="col-sm-8 col-md-8 col-lg-8 ">
 <textarea cols="80" rows="5"  class="form-control" id="headings"  th:field="*{heading}" 
 th:value="${headings.heading}" placeholder=" Enter your heading" autocomplete="off"></textarea>
-<p id="" th:if="${#fields.hasErrors('heading')}" th:errors="*{heading}"></p>
+<p id="validationText" class="label label-danger" th:if="${#fields.hasErrors('heading')}" th:errors="*{heading}"></p>
 
 </div>
 </div>
@@ -659,7 +667,7 @@ th:value="${headings.heading}" placeholder=" Enter your heading" autocomplete="o
 	<div class=" col-sm-5 col-sm-offset-4  col-md-5 col-md-offset-4  col-lg-5 col-lg-offset-4 ">
 	
 			
-	<h2 id="homeTitle">You can manage some heading </h2>
+	<h2 id="manageHeadingTableHeading">You can manage some heading </h2>
 	</div>
 	</div>
 		<!-- table for heading -->
@@ -692,7 +700,7 @@ th:value="${headings.heading}" placeholder=" Enter your heading" autocomplete="o
 <!-- heading for delete serial-->
 		<div class="row">
 	  <div class=" col-sm-5 col-sm-offset-4  col-md-5 col-md-offset-4  col-lg-5 col-lg-offset-4 ">
-      <h2 id="homeTitle">You can delete all serial</h2>
+      <h2 id="manageAllSerialDelete">You can delete all serial</h2>
 	</div>
 	</div>
 
