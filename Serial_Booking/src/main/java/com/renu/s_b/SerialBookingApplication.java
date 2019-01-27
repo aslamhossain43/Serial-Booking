@@ -10,3 +10,4 @@ public class SerialBookingApplication {
 		SpringApplication.run(SerialBookingApplication.class, args);
 	}
 }
+
